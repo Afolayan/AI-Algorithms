@@ -115,22 +115,19 @@ public class UniformCostSearchAlgo{
     public static void UniformCostSearch(Node source, Node goal){
 
         source.pathCost = 0;
+        //override compare method
         PriorityQueue<Node> queue = new PriorityQueue<Node>(20,
-                new Comparator<Node>(){
+                (i, j) -> {
+                    if(i.pathCost > j.pathCost){
+                        return 1;
+                    }
 
-                    //override compare method
-                    public int compare(Node i, Node j){
-                        if(i.pathCost > j.pathCost){
-                            return 1;
-                        }
+                    else if (i.pathCost < j.pathCost){
+                        return -1;
+                    }
 
-                        else if (i.pathCost < j.pathCost){
-                            return -1;
-                        }
-
-                        else{
-                            return 0;
-                        }
+                    else{
+                        return 0;
                     }
                 }
 

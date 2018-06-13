@@ -39,6 +39,17 @@ public class UninformedSearchTest {
         assertEquals(answer, sb.substring(1));
     }
 
+    private void expectIterationToGoal(String answer, String goal, Iterator<String> it) {
+        StringBuilder sb = new StringBuilder();
+        while (it.hasNext()) {
+            String nextItem = it.next();
+            sb.append(' ').append(nextItem);
+            if(nextItem.equals(goal)) break;
+        }
+        System.out.println(sb.toString());
+        assertEquals(answer, sb.substring(1));
+    }
+
     @Test
     public void DepthFirstIterationOfIsolatedVertex() {
         expectIteration("Z", new DepthFirstSearchIterator(graph1, "Z"));
@@ -52,6 +63,11 @@ public class UninformedSearchTest {
     @Test
     public void DepthFirstIterationFromB() {
         expectIteration("B D I K L J E", new DepthFirstSearchIterator(graph1, "B"));
+    }
+
+    @Test
+    public void DepthFirstIterationToGoalF() {
+        expectIterationToGoal("A B D I K L J E C F", "F", new DepthFirstSearchIterator(graph1, "A"));
     }
 
     @Test
