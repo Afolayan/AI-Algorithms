@@ -14,7 +14,7 @@ import java.util.*;
 // java -cp .:junit.jar:hamcrest-core.jar org.junit.runner.JUnitCore GraphTest
 
 @RunWith(JUnit4.class)
-public class MainTest1 {
+public class MainTest {
 
     public static Graph graph1;
 
